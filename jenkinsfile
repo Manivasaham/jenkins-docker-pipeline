@@ -1,13 +1,21 @@
-pipeline:
-  stages:
-    - stage: "Stage1"
-      steps:
-        - echo "1"
-    - stage: "Parallel"
-      parallel:
-        - stage: "Parallel1"
-          steps:
-            - echo "P1"
-        - stage: "Parallel2"
-          steps:
-            - echo "P1"
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
